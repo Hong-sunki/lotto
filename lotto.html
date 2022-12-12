@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lotto_body { width: 50%;margin: 0 auto; }
+        ul,li { list-style: none; }
+        .lotto_row { margin-top: 30px; }
+        .lotto_row > ul { display: flex; }
+        .lotto_row > ul li { width: 15%; }
+    </style>
+</head>
+<body>
+    <button class="lotto_btn">로또 번호 추첨</button>
+
+    <ul class="lotto_body">
+        <li class="lotto_row">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+        <li class="lotto_row">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+        <li class="lotto_row">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+        <li class="lotto_row">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+        <li class="lotto_row">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        let lottoB = document.querySelector('.lotto_btn');
+        let lottoRow = document.querySelectorAll('.lotto_row');
+        lottoB.addEventListener('click', function (){
+            for ( let i = 0; i < lottoRow.length; i++ ) {
+                let lottoUl = lottoRow[i].childNodes[1];
+                let lottoLi = lottoUl.childNodes;
+                let num = [];
+                for ( let k = 0; k < lottoLi.length; k++ ) {
+                    let numList = Math.floor(Math.random() * 44) + 1;
+                    num.includes(numList) ? k = k-1 : num.push(numList); 
+                    // num.push(numList);
+                    num.sort(function(a, b) {
+                        return a - b; 
+                    });
+                }
+                for ( let k = 0; k < lottoLi.length; k++ ) {
+                    lottoLi[k].innerText = num[k];
+                }
+            }
+        })
+    </script>
+</body>
+</html>
